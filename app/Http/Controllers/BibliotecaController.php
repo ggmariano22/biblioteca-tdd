@@ -2,33 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Builders\BookBuilder;
 use App\Models\Book;
+use App\Services\BibliotecaService;
 use Illuminate\Http\Request;
 
 class BibliotecaController extends Controller
 {
-    public function __construct()
+    public function __construct(private BibliotecaService $service)
     {
-
     }
 
     public function index()
     {
-        return json_encode([
-            'deu boa patrao'
-        ]);
+        return $this->responseToJsonSuccess(
+            $this->service->getBooks()
+        );
     }
 
     public function createBook(Request $request)
     {
-        $book = new Book();
+        $book = BookBuilder::build($request->all());
+        $this->service->addBook(($book));
 
-        $book
-        ->setName('O Pequeno Princinpe')
-        ->setAuthor('Antoine de Saint-Exupéry')
-        ->setPages(96)
-        ->setActive(1);
-
-        dd($book->addBook($book));
+        return $this->responseToJsonSuccess(httpCode: 201);
     }
 }

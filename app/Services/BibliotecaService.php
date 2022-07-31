@@ -14,8 +14,7 @@ class BibliotecaService
 
     public function getActiveBooks(): array
     {
-        //TODO
-        return [];
+        return array_filter($this->books, static fn($book) => $book->isActive());
     }
 
     public function addBook(Book $book): BibliotecaService
