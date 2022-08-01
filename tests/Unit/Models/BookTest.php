@@ -47,8 +47,12 @@ class BookTest extends TestCase
     /**
      * @dataProvider bookProvider
      */
-    public function testBookPropertiesValue(string $name, string $author, int $pages, int $active)
-    {
+    public function testBookPropertiesValue(
+        string $name,
+        string $author, 
+        int $pages,
+        int $active
+    ) {
         $book = BookBuilder::build([
             'name'   => $name,
             'author' => $author,
@@ -65,8 +69,12 @@ class BookTest extends TestCase
     /**
      * @dataProvider bookProvider
      */
-    public function testBookPropertiesTypes(string $name, string $author, int $pages, int $active)
-    {
+    public function testBookPropertiesTypes(
+        string $name,
+        string $author,
+        int $pages,
+        int $active
+    ) {
         $book = BookBuilder::build([
             'name'   => $name,
             'author' => $author,
