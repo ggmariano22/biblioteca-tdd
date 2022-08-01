@@ -2,9 +2,10 @@
 
 namespace Tests\Unit\Models;
 
-use App\Services\BibliotecaService;
-use App\Models\Book;
 use Tests\TestCase;
+use App\Models\Book;
+use App\Builders\BookBuilder;
+use App\Services\BibliotecaService;
 
 class BookTest extends TestCase
 {
@@ -33,5 +34,61 @@ class BookTest extends TestCase
         $this->service->addBook($book2);
 
         self::assertCount(2, $this->service->getBooks());
+    }
+
+    public function testShouldBeInstanceOfBook()
+    {
+        $book = new Book();
+        $this->service->addBook($book);
+
+        self::assertInstanceOf(Book::class, $this->service->getBooks()[0]);
+    }
+
+    /**
+     * @dataProvider bookProvider
+     */
+    public function testBookPropertiesValue(string $name, string $author, int $pages, int $active)
+    {
+        $book = BookBuilder::build([
+            'name'   => $name,
+            'author' => $author,
+            'pages'  => $pages,
+            'active' => $active,
+        ]);
+
+        self::assertEquals($book->getName(), $name);
+        self::assertEquals($book->getAuthor(), $author);
+        self::assertEquals($book->getPages(), $pages);
+        self::assertEquals($book->isActive(), $active);
+    }
+
+    /**
+     * @dataProvider bookProvider
+     */
+    public function testBookPropertiesTypes(string $name, string $author, int $pages, int $active)
+    {
+        $book = BookBuilder::build([
+            'name'   => $name,
+            'author' => $author,
+            'pages'  => $pages,
+            'active' => $active,
+        ]);
+
+        self::assertIsString($book->getName());
+        self::assertIsString($book->getAuthor());
+        self::assertIsInt($book->getPages());
+        self::assertTrue($book->isActive());
+    }
+
+    public function bookProvider(): array
+    {
+        return [
+            [
+                'name'   => 'Clean Code',
+                'author' => 'Robert C. Martin',
+                'pages'  => 424,
+                'active' => 1
+            ]
+        ];
     }
 }
