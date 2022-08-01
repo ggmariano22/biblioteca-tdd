@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Builders\BookBuilder;
-use App\Models\Book;
 use App\Services\BibliotecaService;
 use Illuminate\Http\Request;
 

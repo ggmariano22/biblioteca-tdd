@@ -45,4 +45,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 COPY . /var/www
 WORKDIR /var/www
 
+RUN chmod 777 ./storage/logs
+
 RUN composer install
