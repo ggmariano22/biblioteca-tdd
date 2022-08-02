@@ -15,3 +15,4 @@
 
 $router->get('/', 'BibliotecaController@index');
 $router->post('/book', 'BibliotecaController@createBook');
+$router->post('/reservation', 'BibliotecaController@createReservation');

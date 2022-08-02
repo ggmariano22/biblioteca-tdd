@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Book;
+use App\ValueObject\Book;
 
 class BibliotecaService
 {
