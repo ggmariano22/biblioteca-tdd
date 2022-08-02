@@ -13,11 +13,11 @@ phases:
     #Build Nginx dockerfile
       - |
           docker build \
-          -t nginx-biblioteca \
-          -f ./docker/nginx/Dockerfile
+          -t "nginx-biblioteca" \
+          -f ./docker/nginx/Dockerfile .
 
     #Build PHP dockerfile
       - |
           docker build \
-          -t php-biblioteca \
-          -f ./docker/php/Dockerfile
+          -t "php-biblioteca" \
+          -f ./docker/php/Dockerfile .
