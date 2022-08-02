@@ -2,6 +2,7 @@ version: 0.2
 
 phases:
   build:
+    run-as: root
     commands:
     #Install composer dependencies
       - |
@@ -11,8 +12,8 @@ phases:
       
     #Build Nginx dockerfile
       - |
-        docker build -f ./docker/nginx/Dockerfile
+        docker build -t nginx-biblioteca -f ./docker/nginx/Dockerfile
 
     #Build PHP dockerfile
       - |
-        docker build -f ./docker/php/Dockerfile
+        docker build -t php-biblioteca -f ./docker/php/Dockerfile
