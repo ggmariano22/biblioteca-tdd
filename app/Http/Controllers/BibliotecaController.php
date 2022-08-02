@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Builders\BookBuilder;
+use App\Builders\ReservationBuilder;
 use App\Services\BibliotecaService;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,8 @@ class BibliotecaController extends Controller
 
     public function createReservation(Request $request)
     {
-        dd($request->all());
+        (new ReservationBuilder())->build($request->all());
+        
+        return $this->responseToJsonSuccess(httpCode: 201, message: 'Reservation created!');
     }
 }
