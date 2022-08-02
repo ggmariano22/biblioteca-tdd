@@ -2,13 +2,13 @@
 
 namespace App\Builders;
 
-use App\Models\Book;
+use App\ValueObject\Book;
 use DomainException;
 use Throwable;
 
 class BookBuilder implements BuilderInterface
 {
-    public static function build(array $params): Book
+    public function build(array $params): Book
     {
         try {
             $book = new Book();

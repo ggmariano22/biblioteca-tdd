@@ -4,5 +4,5 @@ namespace App\Builders;
 
 interface BuilderInterface
 {
-    public static function build(array $params);
+    public function build(array $params);
 }

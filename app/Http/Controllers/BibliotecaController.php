@@ -21,9 +21,14 @@ class BibliotecaController extends Controller
 
     public function createBook(Request $request)
     {
-        $book = BookBuilder::build($request->all());
+        $book = (new BookBuilder())->build($request->all());
         $this->service->addBook(($book));
 
         return $this->responseToJsonSuccess(httpCode: 201);
+    }
+
+    public function createReservation(Request $request)
+    {
+        dd($request->all());
     }
 }

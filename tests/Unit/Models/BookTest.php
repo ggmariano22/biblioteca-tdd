@@ -3,7 +3,7 @@
 namespace Tests\Unit\Models;
 
 use Tests\TestCase;
-use App\Models\Book;
+use App\ValueObject\Book;
 use App\Builders\BookBuilder;
 use App\Services\BibliotecaService;
 
@@ -53,7 +53,7 @@ class BookTest extends TestCase
         int $pages,
         int $active
     ) {
-        $book = BookBuilder::build([
+        $book = (new BookBuilder)->build([
             'name'   => $name,
             'author' => $author,
             'pages'  => $pages,
@@ -75,7 +75,7 @@ class BookTest extends TestCase
         int $pages,
         int $active
     ) {
-        $book = BookBuilder::build([
+        $book = (new BookBuilder())->build([
             'name'   => $name,
             'author' => $author,
             'pages'  => $pages,
