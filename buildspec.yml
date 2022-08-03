@@ -4,9 +4,14 @@ phases:
   install:
     runtime-versions:
       php: 8.1
+  pre_build:
+    run-as: root
+    commands:
+      - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
   build:
     run-as: root
     commands:
+
     #Install composer dependencies
       - |
         composer install \
