@@ -27,4 +27,6 @@ phases:
 artifacts:
   files:
     - '**/*'
+  base_directory: base_location
   name: biblioteca-tdd-$(date +%Y-%m-%d) 
+  discard_paths: no
