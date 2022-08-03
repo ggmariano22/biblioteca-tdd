@@ -24,6 +24,9 @@ phases:
           docker build \
           -t "php-biblioteca" \
           -f ./docker/php/Dockerfile .
+  post_build:
+    commands:
+      - printf '[{"name":"container_name","imageUri":"image_URI"}]' > imagedefinitions.json
 artifacts:
   files:
     - '**/*'
