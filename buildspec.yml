@@ -31,9 +31,6 @@ phases:
       - sed -i -e "s|CONTAINER_NAME|$ContainerName|g" imagedefinitions.json
       - sed -i -e "s|IMAGE_URI|$ImageURI|g" imagedefinitions.json
       - cat imagedefinitions.json
-  post_build:
-    commands:
-      - printf '[{"name":"php-biblioteca","imageUri":"image_URI"}]' > imagedefinitions.json
 artifacts:
   files:
     - imagedefinitions.json
