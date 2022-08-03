@@ -24,7 +24,7 @@ phases:
           docker build \
           -t "php-biblioteca" \
           -f ./docker/php/Dockerfile .
-      - yum install jq -y
+      - apt-get install jq -y
       - ContainerName="biblioteca-tdd"
       - ImageURI=$(cat imageDetail.json | jq -r '.ImageURI')
       - printf '[{"name":"CONTAINER_NAME","imageUri":"IMAGE_URI"}]' > imagedefinitions.json
