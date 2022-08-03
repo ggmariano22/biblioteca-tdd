@@ -5,7 +5,8 @@ phases:
     runtime-versions:
       docker: 18
   pre-build:
-    - $(aws ecr get-login --no-include-email --region us-east-1)
+    commands:
+      - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     run-as: root
     commands:
